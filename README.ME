@@ -1,0 +1,109 @@
+# fields
+
+{
+  parents {
+    firstnameParent1
+    firstnameParent2
+    lastnameParent1
+    lastnameParent2
+    babies {
+      firstname
+      activities {
+        category
+      }
+    }
+  }
+}
+
+{
+  nannies {
+    firstname
+    lastname
+    id
+    babiesId
+  }
+}
+
+# arguments
+{
+  parent(id:1) {
+    lastnameParent1
+    firstnameParent1
+    lastnameParent2
+    firstnameParent2
+  }
+}
+
+# aliases
+{
+  parent1: parent(id:1) {
+    lastnameParent1
+    firstnameParent1
+    lastnameParent2
+    firstnameParent2
+  }
+}
+
+# fragments
+{
+  leftComparison: parent(id:1) {
+    ...comparisonFields
+  }
+  rightComparison: parent(id:2) {
+    ...comparisonFields
+  }
+}
+
+fragment comparisonFields on Parent {
+  lastnameParent1
+  firstnameParent1
+  lastnameParent2
+  firstnameParent2
+}
+
+# variables
+query findParentById($id: Int) {
+  parent(id:$id) {
+    lastnameParent1
+    firstnameParent1
+    lastnameParent2
+    firstnameParent2
+  }
+}
+
+# directives
+query findParentById($id: Int, $withBabies: Boolean!) {
+  parent(id:$id, withBabies: $withBabies) {
+    lastnameParent1
+    firstnameParent1
+    lastnameParent2
+    firstnameParent2
+    babies @include(if: $withBabies) {
+      firstname
+      lastname
+    }
+  }
+}
+
+{
+  "id": 1,
+  "withBabies": true
+}
+
+# mutation
+mutation saveParent($prtInput: ParentInput) {
+  saveParent(parent: $prtInput)
+}
+
+{
+"prtInput": {
+  "firstnameParent1": "Michel",
+  "lastnameParent1": "Aymerican",
+  "firstnameParent2": "Michelle",
+  "lastnameParent2": "Aymerican"
+}
+}
+
+mutation deleteParent($id: ID) {
+  deleteParent(id: $id)
+}

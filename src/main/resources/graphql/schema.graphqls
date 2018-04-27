@@ -1,0 +1,73 @@
+interface Person {
+    firstname: String
+    lastname: String
+}
+
+type Nanny implements Person {
+    id: ID
+    babiesId: [Int]
+    firstname: String
+    lastname: String
+}
+
+type Parent {
+    id: ID!
+    firstnameParent1: String
+    firstnameParent2: String
+    lastnameParent1: String
+    lastnameParent2: String
+    babies: [Baby]
+}
+
+type Baby implements Person {
+    id: ID!
+    firstname: String
+    lastname: String
+    activities: [Activity]
+}
+
+type Activity {
+    date: String
+    description: String
+    comment: String
+    category: Category
+}
+
+enum Category {
+  SLEEP
+  CAMERA
+  CHANGE
+  PLAYING
+  LEAVE
+  COMING
+  EAT
+  CARE
+}
+
+type Query {
+  parents: [Parent]
+  nannies: [Nanny]
+  #parent(id: Int): Parent
+  #nanny(id: Int): Nanny
+  parent(id: Int, withBabies: Boolean!): Parent
+  nanny(id: Int, withBabies: Boolean!): Nanny
+}
+
+input ParentInput {
+   firstnameParent1: String
+   firstnameParent2: String
+   lastnameParent1: String
+   lastnameParent2: String
+}
+
+input NannyInput {
+   firstname: String
+   lastname: String
+}
+
+type Mutation {
+  saveParent(parent: ParentInput): ID
+  deleteParent(id: ID): Boolean
+  saveNanny(nanny: NannyInput): ID
+  deleteNanny(id: ID): Boolean
+}
