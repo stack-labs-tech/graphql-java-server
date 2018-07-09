@@ -20,13 +20,15 @@
     firstname
     lastname
     id
-    babiesId
+    babies {
+      firstname
+    }
   }
 }
 
 # arguments
 {
-  parent(id:1) {
+  parentById(id:1) {
     lastnameParent1
     firstnameParent1
     lastnameParent2
@@ -36,7 +38,7 @@
 
 # aliases
 {
-  parent1: parent(id:1) {
+  parent1: parentById(id:1) {
     lastnameParent1
     firstnameParent1
     lastnameParent2
@@ -46,10 +48,10 @@
 
 # fragments
 {
-  leftComparison: parent(id:1) {
+  leftComparison: parentById(id:1) {
     ...comparisonFields
   }
-  rightComparison: parent(id:2) {
+  rightComparison: parentById(id:2) {
     ...comparisonFields
   }
 }
@@ -63,12 +65,16 @@ fragment comparisonFields on Parent {
 
 # variables
 query findParentById($id: Int) {
-  parent(id:$id) {
+  parentById(id:$id) {
     lastnameParent1
     firstnameParent1
     lastnameParent2
     firstnameParent2
   }
+}
+
+{
+  "id": 1
 }
 
 # directives
@@ -91,19 +97,27 @@ query findParentById($id: Int, $withBabies: Boolean!) {
 }
 
 # mutation
-mutation saveParent($prtInput: ParentInput) {
-  saveParent(parent: $prtInput)
+
+# create
+mutation createParent($prtInput: ParentInput) {
+  createParent(parent: $prtInput)
 }
 
 {
-"prtInput": {
-  "firstnameParent1": "Michel",
-  "lastnameParent1": "Aymerican",
-  "firstnameParent2": "Michelle",
-  "lastnameParent2": "Aymerican"
-}
+  "prtInput": {
+    "firstnameParent1": "Michel",
+    "lastnameParent1": "Aymerican",
+    "firstnameParent2": "Michelle",
+    "lastnameParent2": "Aymerican"
+  }
 }
 
+# delete
 mutation deleteParent($id: ID) {
   deleteParent(id: $id)
 }
+
+{
+  "id": 2
+}
+

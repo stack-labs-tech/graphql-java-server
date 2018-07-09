@@ -13,8 +13,4 @@ public class NannyResolver implements GraphQLResolver<Nanny> {
     public NannyResolver(NannyDao nannyDao) {
         this.nannyDao = nannyDao;
     }
-
-    public Optional<Nanny> getNanny(Long id) {
-        return nannyDao.getNanny(id);
-    }
 }

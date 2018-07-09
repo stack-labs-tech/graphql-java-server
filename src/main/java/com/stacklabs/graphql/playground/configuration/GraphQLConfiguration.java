@@ -4,9 +4,6 @@ import com.stacklabs.graphql.playground.dao.NannyDao;
 import com.stacklabs.graphql.playground.dao.ParentDao;
 import com.stacklabs.graphql.playground.exception.GraphQLErrorAdapter;
 import com.stacklabs.graphql.playground.resolver.Mutation;
-import com.stacklabs.graphql.playground.resolver.ParentResolver;
-import com.stacklabs.graphql.playground.resolver.NannyResolver;
-
 import com.stacklabs.graphql.playground.resolver.Query;
 import graphql.ExceptionWhileDataFetching;
 import graphql.GraphQLError;

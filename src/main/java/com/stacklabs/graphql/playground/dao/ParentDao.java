@@ -18,7 +18,7 @@ import java.util.Optional;
 @Getter
 @Component
 public class ParentDao {
-    private List<Parent> parents = new ArrayList<>();
+    public List<Parent> parents = new ArrayList<>();
 
     public Optional<Parent> getParent(Long id) {
         return parents.stream().filter(parent -> id.compareTo(parent.getId()) == 0).findFirst();
@@ -38,64 +38,65 @@ public class ParentDao {
     @PostConstruct
     public void buildParents() {
 
-        Parent parentNoaZohra = new Parent();
-        parentNoaZohra.setId(1l);
-        parentNoaZohra.setFirstnameParent1("Noa");
-        parentNoaZohra.setFirstnameParent2("Zohra");
-        parentNoaZohra.setLastnameParent1("Adams");
-        parentNoaZohra.setLastnameParent2("Adams");
+        Parent parentMaxwellFran = new Parent();
+        parentMaxwellFran.setId(1l);
+        parentMaxwellFran.setFirstnameParent1("Maxwell");
+        parentMaxwellFran.setFirstnameParent2("Fran");
+        parentMaxwellFran.setLastnameParent1("Sheffield");
+        parentMaxwellFran.setLastnameParent2("Fine");
+        parentMaxwellFran.setAddress("1 rue du Capitole, 31000 Toulouse");
 
-        Baby babyJacque = new Baby();
-        babyJacque.setId(1l);
-        babyJacque.setFirstname("Jacque");
-        babyJacque.setLastname("Adams");
+        Baby babyMaggie = new Baby();
+        babyMaggie.setId(1l);
+        babyMaggie.setFirstname("Maggie");
+        babyMaggie.setLastname("Sheffield");
 
-        Activity activityJacqueCamera = new Activity();
-        activityJacqueCamera.setCategory(Category.CAMERA);
-        activityJacqueCamera.setDate(new Date());
-        activityJacqueCamera.setDescription("Take a photo");
+        Activity activityMaggieCamera = new Activity();
+        activityMaggieCamera.setCategory(Category.FEED);
+        activityMaggieCamera.setDate(new Date());
+        activityMaggieCamera.setDescription("Eating");
 
-        Activity activityJacqueSleep = new Activity();
-        activityJacqueSleep.setCategory(Category.SLEEP);
-        activityJacqueSleep.setDate(new Date());
-        activityJacqueSleep.setDescription("Sleeping");
+        Activity activityMaggieSleep = new Activity();
+        activityMaggieSleep.setCategory(Category.SLEEP);
+        activityMaggieSleep.setDate(new Date());
+        activityMaggieSleep.setDescription("Sleeping");
 
-        babyJacque.setActivities(new ArrayList<Activity>() {
+        babyMaggie.setActivities(new ArrayList<Activity>() {
             {
-                add(activityJacqueCamera);
-                add(activityJacqueSleep);
+                add(activityMaggieCamera);
+                add(activityMaggieSleep);
             }
         });
 
-        Baby babyMichel = new Baby();
-        babyMichel.setId(2l);
-        babyMichel.setFirstname("Michelle");
-        babyMichel.setLastname("Adams");
+        Baby babyBrighton = new Baby();
+        babyBrighton.setId(2l);
+        babyBrighton.setFirstname("Brighton");
+        babyBrighton.setLastname("Sheffield");
 
-        Activity activityMichelChange = new Activity();
-        activityMichelChange.setCategory(Category.CHANGE);
-        activityMichelChange.setDate(new Date());
-        activityMichelChange.setDescription("Change your baby's diaper");
+        Activity activityBrightonChange = new Activity();
+        activityBrightonChange.setCategory(Category.CHANGE);
+        activityBrightonChange.setDate(new Date());
+        activityBrightonChange.setDescription("Change your baby's diaper");
 
-        Activity activityMichelCare = new Activity();
-        activityMichelCare.setCategory(Category.CARE);
-        activityMichelCare.setDate(new Date());
-        activityMichelCare.setDescription("Syringe");
+        Activity activityBrightonCare = new Activity();
+        activityBrightonCare.setCategory(Category.CARE);
+        activityBrightonCare.setDate(new Date());
+        activityBrightonCare.setDescription("Syringe");
 
-        babyMichel.setActivities(new ArrayList<Activity>() {
+        babyBrighton.setActivities(new ArrayList<Activity>() {
             {
-                add(activityMichelChange);
-                add(activityMichelCare);
+                add(activityBrightonChange);
+                add(activityBrightonCare);
             }
         });
 
-        parentNoaZohra.setBabies(new ArrayList<Baby>() {
+        parentMaxwellFran.setBabies(new ArrayList<Baby>() {
             {
-                add(babyJacque);
-                add(babyMichel);
+                add(babyMaggie);
+                add(babyBrighton);
             }
         });
 
-        parents.add(parentNoaZohra);
+        parents.add(parentMaxwellFran);
     }
 }

@@ -10,7 +10,8 @@ import java.util.List;
 @Setter
 public class Nanny implements Serializable {
     private Long id;
-    private List<Long> babiesId;
+    private List<Baby> babies;
     private String firstname;
     private String lastname;
+    private String address;
 }

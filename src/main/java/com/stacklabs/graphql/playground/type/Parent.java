@@ -14,5 +14,6 @@ public class Parent implements Serializable {
     private String firstnameParent2;
     private String lastnameParent1;
     private String lastnameParent2;
+    private String address;
     private List<Baby> babies;
 }

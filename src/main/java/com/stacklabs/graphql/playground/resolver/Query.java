@@ -26,19 +26,19 @@ public class Query implements GraphQLQueryResolver {
         return nannyDao.getNannies();
     }
 
+    public Optional<Parent> parentById(Long id) {
+        return parentDao.getParent(id);
+    }
+
     public Optional<Parent> parent(Long id, Boolean withBabies) {
         return parentDao.getParent(id);
     }
 
-    public Optional<Nanny> nanny(Long id, Boolean withBabies) {
+    public Optional<Nanny> nannyById(Long id) {
         return nannyDao.getNanny(id);
     }
 
-    public Optional<Parent> parent(Long id) {
-        return parentDao.getParent(id);
-    }
-
-    public Optional<Nanny> nanny(Long id) {
+    public Optional<Nanny> nanny(Long id, Boolean withBabies) {
         return nannyDao.getNanny(id);
     }
 }

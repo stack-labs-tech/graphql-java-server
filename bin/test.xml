@@ -1,0 +1,22 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://api.babycare.com/publisher/v201807">
+      <requestId>xxxxxxxxxxxxxxxxxxxx</requestId>
+      <responseTime>1063</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <findAllParentsResponse xmlns="https://api.babycare.com/publisher/v201807">
+      <rval>
+        <totalResultSetSize>1</totalResultSetSize>
+        <startIndex>0</startIndex>
+        <results>
+            <parent>
+                <firstnameParent1>Maxwell</firstnameParent1>
+                <firstnameParent2>Fran</firstnameParent2>
+            </parent>
+        </results>
+      </rval>
+    </findAllParentsResponse>
+  </soap:Body>
+</soap:Envelope>

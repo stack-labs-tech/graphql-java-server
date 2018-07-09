@@ -16,7 +16,7 @@ public class Mutation implements GraphQLMutationResolver {
         this.nannyDao = nannyDao;
     }
 
-    public Long saveParent(Parent parent) {
+    public Long createParent(Parent parent) {
        return parentDao.save(parent);
     }
 
@@ -24,7 +24,7 @@ public class Mutation implements GraphQLMutationResolver {
         parentDao.delete(id);
     }
 
-    public Long saveNanny(Nanny nanny) {
+    public Long createNanny(Nanny nanny) {
        return nannyDao.save(nanny);
     }
 

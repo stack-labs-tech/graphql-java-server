@@ -5,9 +5,10 @@ interface Person {
 
 type Nanny implements Person {
     id: ID
-    babiesId: [Int]
+    babies: [Baby]
     firstname: String
     lastname: String
+    address: String
 }
 
 type Parent {
@@ -16,6 +17,7 @@ type Parent {
     firstnameParent2: String
     lastnameParent1: String
     lastnameParent2: String
+    address: String @deprecated
     babies: [Baby]
 }
 
@@ -35,20 +37,19 @@ type Activity {
 
 enum Category {
   SLEEP
-  CAMERA
+  FEED
   CHANGE
   PLAYING
   LEAVE
   COMING
-  EAT
   CARE
 }
 
 type Query {
   parents: [Parent]
   nannies: [Nanny]
-  #parent(id: Int): Parent
-  #nanny(id: Int): Nanny
+  parentById(id: Int): Parent
+  nannyById(id: Int): Nanny
   parent(id: Int, withBabies: Boolean!): Parent
   nanny(id: Int, withBabies: Boolean!): Nanny
 }
@@ -66,8 +67,8 @@ input NannyInput {
 }
 
 type Mutation {
-  saveParent(parent: ParentInput): ID
+  createParent(parent: ParentInput): ID
   deleteParent(id: ID): Boolean
-  saveNanny(nanny: NannyInput): ID
+  createNanny(nanny: NannyInput): ID
   deleteNanny(id: ID): Boolean
 }

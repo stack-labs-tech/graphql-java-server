@@ -1,0 +1,15 @@
+{
+    "content": [{
+        "firstnameParent1": "Maxwell",
+        "firstnameParent2": "Fran",
+        "links": [ {
+            "rel": "self",
+            "href": "https://api.babycare.com/parents/1"
+        }]
+    }],
+    "links": [{
+        "rel": "parents.findAll",
+        "href": "https://api.babycare.com/parents"
+    }]
+}   
+

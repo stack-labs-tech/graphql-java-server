@@ -1,5 +1,5 @@
 package com.stacklabs.graphql.playground.type;
 
 public enum Category {
-    SLEEP, CAMERA, CHANGE, PLAYING, LEAVE, COMING, EAT, CARE
+    SLEEP, FEED, CHANGE, PLAYING, LEAVE, COMING, CARE
 }

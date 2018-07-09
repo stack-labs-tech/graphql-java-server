@@ -2,12 +2,17 @@ package com.stacklabs.graphql.playground.dao;
 
 import com.stacklabs.graphql.playground.type.Nanny;
 import com.stacklabs.graphql.playground.type.Parent;
+import com.stacklabs.graphql.playground.type.Activity;
+import com.stacklabs.graphql.playground.type.Baby;
+import com.stacklabs.graphql.playground.type.Category;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,15 +40,63 @@ public class NannyDao {
     @PostConstruct
     public void buildParents() {
         Nanny superNanny = new Nanny();
-        superNanny.setFirstname("Mathilde");
-        superNanny.setLastname("Vuge");
+        superNanny.setFirstname("Euphegenia");
+        superNanny.setLastname("Doubtfire");
         superNanny.setId(1l);
-        superNanny.setBabiesId(new ArrayList<Long>() {
+ 
+        Baby babyMaggie = new Baby();
+        babyMaggie.setId(1l);
+        babyMaggie.setFirstname("Maggie");
+        babyMaggie.setLastname("Sheffield");
+
+        Activity activityMaggieCamera = new Activity();
+        activityMaggieCamera.setCategory(Category.FEED);
+        activityMaggieCamera.setDate(new Date());
+        activityMaggieCamera.setDescription("Eating");
+
+        Activity activityMaggieSleep = new Activity();
+        activityMaggieSleep.setCategory(Category.SLEEP);
+        activityMaggieSleep.setDate(new Date());
+        activityMaggieSleep.setDescription("Sleeping");
+
+        babyMaggie.setActivities(new ArrayList<Activity>() {
             {
-                add(1l);
-                add(2l);
+                add(activityMaggieCamera);
+                add(activityMaggieSleep);
             }
         });
+
+        Baby babyBrighton = new Baby();
+        babyBrighton.setId(2l);
+        babyBrighton.setFirstname("Brighton");
+        babyBrighton.setLastname("Sheffield");
+
+        Activity activityBrightonChange = new Activity();
+        activityBrightonChange.setCategory(Category.CHANGE);
+        activityBrightonChange.setDate(new Date());
+        activityBrightonChange.setDescription("Change your baby's diaper");
+
+        Activity activityBrightonCare = new Activity();
+        activityBrightonCare.setCategory(Category.CARE);
+        activityBrightonCare.setDate(new Date());
+        activityBrightonCare.setDescription("Syringe");
+
+        babyBrighton.setActivities(new ArrayList<Activity>() {
+            {
+                add(activityBrightonChange);
+                add(activityBrightonCare);
+            }
+        });
+
+        superNanny.setBabies(new ArrayList<Baby>() {
+            {
+                add(babyMaggie);
+                add(babyBrighton);
+            }
+        });
+
         nannies.add(superNanny);
     }
+
+    
 }
